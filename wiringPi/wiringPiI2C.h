@@ -31,7 +31,7 @@ extern int wiringPiI2CReadReg8       (int fd, int reg) ;
 extern int wiringPiI2CReadReg16      (int fd, int reg) ;
 
 extern int wiringPiI2CWrite          (int fd, int data) ;
-extern int wiringPiI2CBlockWrite          (int fd, uint8_t* buf, int count) ;
+extern int wiringPiI2CBlockWrite     (int fd, char* buf, int count) ;
 extern int wiringPiI2CWriteReg8      (int fd, int reg, int data) ;
 extern int wiringPiI2CWriteReg16     (int fd, int reg, int data) ;
 
