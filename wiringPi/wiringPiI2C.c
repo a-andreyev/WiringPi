@@ -166,6 +166,14 @@ int wiringPiI2CWrite (int fd, int data)
   return i2c_smbus_access (fd, I2C_SMBUS_WRITE, data, I2C_SMBUS_BYTE, NULL) ;
 }
 
+int wiringPiI2CWrite(int fd, uint8_t *buf, int count)
+{
+    union i2c_smbus_data data;
+    data.block[0] = count;
+    for (i=1; i<=count; i++) data.block[i] = buf[i-1];
+    int status = i2c_smbus_access (fd, I2C_SMBUS_WRITE, count, I2C_SMBUS_BLOCK_DATA, &data) ;
+    return status;
+}
 
 /*
  * wiringPiI2CWriteReg8: wiringPiI2CWriteReg16:
