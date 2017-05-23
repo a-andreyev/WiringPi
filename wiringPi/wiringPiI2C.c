@@ -130,7 +130,7 @@ int wiringPiI2CRead (int fd)
 int wiringPiI2CBlockRead(int fd, char *buf, int count)
 {
     union i2c_smbus_data data ;
-    int status = i2c_smbus_access (fd, I2C_SMBUS_READ, 0, I2C_SMBUS_BYTE, &data);
+    int status = i2c_smbus_access (fd, I2C_SMBUS_READ, 0, I2C_SMBUS_BLOCK_DATA, &data);
     if (status) {
         for (int i=0;i<count;i++) {
             buf[i]=data.block[i];
