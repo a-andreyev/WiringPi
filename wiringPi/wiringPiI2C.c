@@ -127,6 +127,18 @@ int wiringPiI2CRead (int fd)
     return data.byte & 0xFF ;
 }
 
+int wiringPiI2CBlockRead(int fd, char *buf, int count)
+{
+    union i2c_smbus_data data ;
+    int status = i2c_smbus_access (fd, I2C_SMBUS_READ, 0, I2C_SMBUS_BYTE, &data);
+    if (status) {
+        for (int i=0;i<count;i++) {
+            buf[i]=data.block[i];
+        }
+    }
+    return status;
+}
+
 
 /*
  * wiringPiI2CReadReg8: wiringPiI2CReadReg16:

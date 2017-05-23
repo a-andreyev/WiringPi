@@ -27,6 +27,7 @@ extern "C" {
 #endif
 
 extern int wiringPiI2CRead           (int fd) ;
+extern int wiringPiI2CBlockRead      (int fd, char* buf, int count) ;
 extern int wiringPiI2CReadReg8       (int fd, int reg) ;
 extern int wiringPiI2CReadReg16      (int fd, int reg) ;
 
